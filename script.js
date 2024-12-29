@@ -1,35 +1,54 @@
-// responses.js
+import java.util.Scanner;
 
-// Respuestas predefinidas
-const respuestas = {
-    "¿qué es el branding?": "El branding es el proceso de construir una identidad única para tu marca, incluyendo nombre, logotipo, colores y mensajes clave.",
-    "¿cómo elijo un nombre para mi negocio?": "Un buen nombre debe ser memorable, fácil de pronunciar y relacionado con tu mercado objetivo.",
-    "¿qué incluye el branding?": "Incluye elementos visuales como logotipo, colores, tipografía, y mensajes clave como propuesta de valor y llamados a la acción.",
-    "¿cómo defino mi propuesta de valor?": "Identifica lo que hace única a tu marca y cómo resuelve los problemas de tus clientes de manera diferente a la competencia."
-};
+public class BrandingAssistant {
 
-// Función para procesar la pregunta y mostrar la respuesta
-function getResponse() {
-    const userInput = document.getElementById("userInput").value.toLowerCase();
-    const responseContainer = document.getElementById("responseContainer");
+    // Respuestas predefinidas para preguntas sobre branding
+    private static final String BRANDING = "El branding es el proceso de crear una identidad única para tu marca, incluyendo logotipo, colores, tipografía y mensaje clave.";
+    private static final String NOMBRE = "Un buen nombre debe ser memorable, fácil de pronunciar y estar relacionado con tu mercado objetivo.";
+    private static final String VALOR = "Tu propuesta de valor debe ser clara y resaltar lo que hace única a tu marca.";
+    private static final String LOGOTIPO = "Un logotipo debe ser simple, reconocible y reflejar la personalidad de tu marca.";
 
-    // Mostrar un indicador de carga
-    responseContainer.style.display = "block";
-    responseContainer.textContent = "Pensando...";
+    public static void main(String[] args) {
+        // Crear un objeto Scanner para leer la entrada del usuario
+        Scanner scanner = new Scanner(System.in);
 
-    setTimeout(() => {
-        let respuesta = "Lo siento, no tengo una respuesta para esa pregunta. Intenta con otra.";
+        // Bienvenida e instrucciones
+        System.out.println("¡Bienvenido al Asistente de Branding!");
+        System.out.println("Puedes preguntarme sobre branding, nombre, valor o logotipo.");
 
-        // Buscar palabras clave
-        if (userInput.includes("branding")) {
-            respuesta = "El branding incluye logotipos, colores, tipografías y mensajes clave para tu marca.";
-        } else if (userInput.includes("nombre")) {
-            respuesta = "Un buen nombre debe ser memorable, fácil de pronunciar y relacionado con tu mercado.";
-        } else if (userInput.includes("valor")) {
-            respuesta = "Tu propuesta de valor debe destacar cómo resuelves el problema de tus clientes mejor que la competencia.";
+        // Bucle para pedir entradas al usuario
+        while (true) {
+            // Solicitar al usuario una pregunta
+            System.out.print("Escribe tu pregunta: ");
+            String userInput = scanner.nextLine().toLowerCase();  // Leer y convertir a minúsculas
+
+            // Salir del programa si el usuario escribe "salir"
+            if (userInput.equals("salir")) {
+                System.out.println("Gracias por usar el Asistente de Branding. ¡Hasta luego!");
+                break;
+            }
+
+            // Procesar la entrada y mostrar la respuesta
+            String respuesta = getResponse(userInput);
+            System.out.println(respuesta);
         }
 
-        // Mostrar respuesta final
-        responseContainer.textContent = respuesta;
-    }, 1000); // Simula un retraso de 1 segundo
+        // Cerrar el scanner al finalizar
+        scanner.close();
+    }
+
+    // Función para obtener la respuesta según la entrada del usuario
+    private static String getResponse(String userInput) {
+        if (userInput.contains("branding")) {
+            return BRANDING;
+        } else if (userInput.contains("nombre")) {
+            return NOMBRE;
+        } else if (userInput.contains("valor")) {
+            return VALOR;
+        } else if (userInput.contains("logotipo")) {
+            return LOGOTIPO;
+        } else {
+            return "Lo siento, no tengo una respuesta para esa pregunta. Intenta con otra.";
+        }
+    }
 }
