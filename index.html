@@ -1,36 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentor de Negocios</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Respuestas Automáticas de Branding</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Vincula tu archivo CSS -->
 </head>
 <body>
-    <header>
-        <h1>Mentor de Negocios</h1>
-        <p>Implementa tus ideas con ayuda de un mentor virtual</p>
-    </header>
-    <main>
-        <section id="branding">
-            <h2>Branding</h2>
-            <button onclick="generateBranding()">Crear Branding</button>
-            <div id="branding-output"></div>
-        </section>
-        <section id="social-media">
-            <h2>Redes Sociales</h2>
-            <button onclick="optimizeSocialMedia()">Optimizar Redes</button>
-            <div id="social-output"></div>
-        </section>
-        <section id="campaigns">
-            <h2>Campañas Publicitarias</h2>
-            <button onclick="generateCampaigns()">Crear Campañas</button>
-            <div id="campaigns-output"></div>
-        </section>
-    </main>
-    <footer>
-        <p>Desarrollado por [Tu Nombre]</p>
-    </footer>
-    <script src="script.js"></script>
+    <div class="container">
+        <h1>Respuestas Automáticas</h1>
+        <input type="text" id="userInput" placeholder="Escribe tu pregunta sobre branding">
+        <button onclick="getResponse()">Obtener Respuesta</button>
+        <div id="responseContainer" class="response" style="display: none;"></div>
+    </div>
+    <script src="responses.js"></script> <!-- Vincula tu archivo JavaScript -->
 </body>
 </html>
